@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Report {{ status }} Item | CampusFind{% endblock %}
+{% block content %}
+<div class="form-wrap">
+    <p class="eyebrow">CAMPUSFIND REPORT</p>
+    <h1>Report a <span>{{ status|lower }}</span> item</h1>
+    <p class="muted">Share a few details so other students can help.</p>
+    <form method="POST" class="report-form">
+        <label>Item name<input name="item_name" placeholder="e.g. Black water bottle" required></label>
+        <label>Category
+            <select name="category" required>
+                <option value="">Choose a category</option>
+                <option>Electronics</option><option>Books & Notes</option>
+                <option>Wallet & ID</option><option>Clothing</option>
+                <option>Accessories</option><option>Other</option>
+            </select>
+        </label>
+        <label>Description<textarea name="description" rows="4" placeholder="Colour, brand, identifying details..." required></textarea></label>
+        <label>Where was it {{ 'lost' if status == 'Lost' else 'found' }}?<input name="location" placeholder="e.g. Library, block A" required></label>
+        <label>Date<input type="date" name="date_reported"></label>
+        <label>Contact information<input name="contact" placeholder="College email or phone number" required></label>
+        <button class="button primary" type="submit">Submit report</button>
+    </form>
+</div>
+{% endblock %}
